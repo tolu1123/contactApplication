@@ -1,0 +1,295 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+html {
+    font-size: 20px;
+}
+header {
+    background-color: rgb(106, 106, 211);
+    color: #fff;
+}
+header > div.titleholder {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 20px 0;
+}
+div.addContactPage > header div.panel {
+    padding-bottom: 8px; 
+}
+h1 {
+    flex: 82%;
+    font-size: 1.8rem;
+}
+div.side {
+    display: flex;
+    flex: 18%;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 1.1rem;
+}
+nav {
+ font-size: 1rem;
+ display: flex;
+ flex-direction: row;
+ justify-content: space-around;
+ margin-top: 30px;
+}
+nav h2 {
+    flex: 45%;
+}
+nav h3 {
+    flex: 55%;
+}
+nav h2 , nav h3 {
+    font-size: 0.8rem;
+    padding-bottom: 15px;
+    letter-spacing: 0.8px;
+    color: #ccc;
+    text-align: center;
+    cursor: context-menu;
+}
+.highlight {
+    color: #fff;
+    border-bottom: 5px solid white;
+    box-shadow: 0px 2px rgba(0, 0, 0, 0.07);  
+}
+div.contactlist {
+    display: block;
+    position: relative;
+    padding: 15px 20px 0;
+}
+div.favourites {
+    display: none;
+    padding: 15px 20px 0;
+}
+div.contactlist div.addContact {
+    position: fixed;
+    display: block;
+    bottom: 25px;
+    right: 25px;
+    width: 70px;
+    height: 70px;
+    background-color: rgb(106, 106, 211);
+    border-radius: 50%;
+}
+div.addContact > img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+span.back {
+    flex: 10%;
+    font-size: 1.4rem;
+}
+span.back a {
+    color: #fff;
+}
+div.title {
+    flex: 90%;
+}
+div.title > h1 {
+    font-size: 1.2rem;
+    font-weight: 400;
+    text-align: center;
+}
+div.profilePic {
+    display: flex;
+    justify-content: center;
+}
+div.input {
+    display: flex;
+    flex-wrap: wrap;
+    /* flex-direction: column; */
+    justify-content: center;
+    background-color: #fff;
+}
+div.input > div , div.input > input{
+    width: 80%;
+    text-align: center;
+    height: 45px;
+    margin: 20px 0;
+}
+div.input > div > input {
+    width: 85%;
+    height: 35px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #000;
+    margin-left: 5px;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+}
+label i {
+    font-size: 1.2rem;
+}
+div.determinant {
+    display: none;
+}
+input[type="button"] {
+    background-color: rgb(106, 106, 211);
+    outline: none;
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+}
+input[type="button"]:hover {
+    color: rgb(106, 106, 211);
+    border: 1px solid rgb(106, 106, 211);
+    background-color: #fff;
+}
+div.addContactPage {
+    display: none;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 9999;
+    overflow: auto;
+}
+/* width */
+::-webkit-scrollbar {
+    width: 16px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    background: #f1f1f1; 
+    border-radius: 8px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 8px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #b30000; 
+  }
+
+/* STYLING THE CONTENTS OF THE ALL CONTACTS SECTION */
+div.contactlist > div {
+    display: flex;
+    flex-direction: row;
+    display: none ;
+}
+div.contactlist > div > div {
+    flex: 18%;
+    border: 1px solid black;
+    color: #777;
+    font-size: 1.2rem;
+}
+div.contactlist > div > ul {
+    flex: 82%;
+    border: 1px solid;
+}
+div.contactlist > div > ul li {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    align-items: center;
+    margin: 8px 0 8px;
+}
+div.contactlist > div > ul li span{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 400;
+    background-color: #b30000;
+    color: #fff;
+    margin-right: 30px;
+}
+
+/* THE ABOUTME SECTION  */
+div.aboutMe {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    /* height: 98vh; */
+    display: none;
+}
+div.image {
+    /* width: 100%;
+    height: 60%; */
+    display: flex;
+    justify-content: center;
+    padding: 70px 0 50px 0;
+    position: relative;
+}
+div.image > span {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    color: #fff;
+    font-size: 2rem;
+}
+div.image ~ div {
+    
+}
+div.image ~ div > p {
+    /* display: inline-block; */
+
+}
+div.image > p.name {
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+    color: #fff;
+    font-size: 2.2rem;
+}
+div.image div.sideMenu {
+    width: 150px;
+    position: absolute;
+    top: 25px;
+    right: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+div.contactPanel {
+    display: flex;
+    justify-content: center;
+}
+div.flex {
+    width: 96%;
+    padding: 15px 20px;
+    font-weight: 700;
+    box-shadow: 5px 5px 5px #ccc, -5px -5px 5px #ccc;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 25px 0 25px;
+}
+div.flex div i {
+    font-size: 1.4rem;
+}
+div.number {
+    font-weight: 400;
+    width: 60%;
+}
+div.call {
+    width: 15%;
+}
+div.message {
+    width: 15%;
+}
+p.phoneNumber {
+    line-height: 20px;
+}
+p.phoneNumber + p {
+    line-height: 20px;
+}

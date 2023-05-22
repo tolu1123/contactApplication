@@ -1,0 +1,98 @@
+function updateContactList() {
+    // Clear all the existing contacts from the contact list
+    clearContactList();
+    
+    for (let i = 0; i < contactArray.length; i++) {
+        const contact = contactArray[i];
+        <!-- const [firstName, lastName, phoneNo, color] = contact.split(':'); -->
+        const splittedContact = contact.split(':');
+        const firstLetter = splittedContact[0].charAt(0).toUpperCase();
+      
+        // Create an <li> element for the contact
+        const li = document.createElement('li');
+        li.textContent = `${firstName} ${lastName}`;
+        li.style.backgroundColor = `#${color}`;
+      
+        // Find the corresponding alphabetical section (ul) for the contact
+        const ul = document.querySelector(`.${firstLetter}`);
+      
+        // Append the <li> element to the corresponding alphabetical section (ul)
+        ul.appendChild(li);
+      }
+      
+    
+    function clearContactList() {
+    // Clear all the contacts from the contact list
+    const ulList = document.querySelectorAll('.contactlist ul');
+    ulList.forEach(ul => {
+      ul.innerHTML = '';
+    });
+    }
+
+
+    
+for (let i = 0; i < contactArray.length; i++) {
+
+    const aBox = document.querySelector('.a');
+    const boxA = document.querySelector('.A');
+    let innerList = document.createElement('li');
+    const subPic = document.createElement('span');
+    const nameHolder = document.createElement('p');
+
+
+    aBox.style.display = 'block';
+    //ASSINGNING THE TEXT-CONTENT OF THE CONTACT PLACEHOLDER.
+    let splitArray = contactArray[i].split(':');
+    nameHolder.textContent = `${splitArray[0]} ${splitArray[1]}`;
+    subPic.textContent = `${splitArray[0].slice(0,1)}`;
+
+
+    //APPENDING THE SAVED CONTACTS
+    boxA.appendChild(innerList);
+    innerList.appendChild(subPic);
+    innerList.appendChild(nameHolder);
+    
+
+}
+
+/*
+for (let i = 0; i < contactArray.length; i++) {
+
+    if (contactArray[i].startsWith('a') || contactArray[i].startsWith('A')) {
+        const aBox = document.querySelector('.aBox');
+        const boxA = document.querySelector('.boxA');
+        let innerList = document.createElement('li');
+        const subPic = document.createElement('span');
+        const nameHolder = document.createElement('p');
+
+        z += 1;
+        aBox.style.display = 'block';
+        //ASSINGNING THE TEXT-CONTENT OF THE CONTACT PLACEHOLDER.
+        let splitArray = contactArray[i].split(':');
+        nameHolder.textContent = `${splitArray[0]} ${splitArray[1]}`;
+        subPic.textContent = `${splitArray[0].slice(0,1)}`;
+
+
+        //APPENDING THE SAVED CONTACTS
+        boxA.appendChild(innerList);
+        innerList.appendChild(subPic);
+        innerList.appendChild(nameHolder);
+        
+    } 
+}
+*/
+
+/*
+if (star.innerHTML === '<i class="fa-solid fa-star"></i>') {
+    // If already starred, remove star and splice from the array
+    const index = favArray.indexOf(contact);
+    if (index !== -1) {
+      favArray.splice(index, 1);
+    }
+    star.innerHTML = '<i class="fa-regular fa-star"></i>';
+  } else {
+    // If not starred, add star and push to the array
+    favArray.push(contact);
+    star.innerHTML = '<i class="fa-solid fa-star"></i>';
+  }
+*/
