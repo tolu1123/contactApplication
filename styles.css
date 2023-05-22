@@ -184,13 +184,13 @@ div.contactlist > div {
 }
 div.contactlist > div > div {
     flex: 18%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     color: #777;
     font-size: 1.2rem;
 }
 div.contactlist > div > ul {
     flex: 82%;
-    border: 1px solid;
+    /* border: 1px solid; */
 }
 div.contactlist > div > ul li {
     width: 100%;
