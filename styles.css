@@ -62,10 +62,22 @@ div.contactlist {
     display: block;
     position: relative;
     padding: 15px 20px 0;
+    height: 100%;
 }
 div.favourites {
     display: none;
     padding: 15px 20px 0;
+}
+div.contactlist div.meantimeMessage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 70vh;
+}
+div.contactlist div.meantimeMessage p {
+    color: rgb(106, 106, 211);
+    font-weight: 300;
 }
 div.contactlist div.addContact {
     position: fixed;
@@ -199,6 +211,7 @@ div.contactlist > div > ul li {
     position: relative;
     align-items: center;
     margin: 8px 0 8px;
+    cursor: context-menu;
 }
 div.contactlist > div > ul li span{
     width: 45px;
