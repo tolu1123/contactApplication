@@ -76,8 +76,10 @@ const lname = document.querySelector('.lname');
 const phone = document.querySelector('.phoneNo');
 
 let contactArray = [];
-const favArray = [];
-
+let favArray = [];
+let currentContact = '';
+let starClicked = false;
+let recentContact = null;
 
 function saveContact() {
     let phoneNo = phone.value;
@@ -120,113 +122,16 @@ function updateContactList() {
         // Create an <li> element for the contact
         const li = document.createElement('li');
       
-        //FOR DISPLAYING THE DETAILS OF THE CONTACT
-        const aboutMe = document.querySelector('.aboutMe');
-        const aboutName = document.querySelector('.name');
-        const aboutPhoneNo = document.querySelector('.phoneNumber');
-
-
-        //THE CODE FOR THE aboutMe
-        function doc() {
-            aboutMe.style.display = 'block';
-            aboutName.textContent = `${firstName} ${lastName}`
-            aboutPhoneNo.textContent = `${phoneNo}`;
-            contactList.style.display = 'none';
-
-           //FOR APPLYING COLOR TO THE RESPECTIVE PLACES IN .aboutMe
-        const image = document.querySelector('.image');
-        const call = document.querySelector('.call');
-        const message = document.querySelector('.message');
-
-        if (`${color}` === '1') {
-            image.style.backgroundColor = 'red';
-            call.style.color = 'red';
-            message.style.color = 'red';
-            }else if (`${color}` === '2') {
-                image.style.backgroundColor = 'blue';
-                call.style.color = 'blue';
-                message.style.color = 'blue';
-            }else if (`${color}` === '3') {
-                image.style.backgroundColor = 'mediumseagreen';
-                call.style.color = 'mediumseagreen';
-                message.style.color = 'mediumseagreen';
-            }else if (`${color}` === '4') {
-                image.style.backgroundColor = 'brown';
-                call.style.color = 'brown';
-                message.style.color = 'brown';
-            }else if (`${color}` === '5') {
-                image.style.backgroundColor = 'violet';
-                call.style.color = 'violet';
-                message.style.color = 'violet';
-            }else if (`${color}` === '6') {
-                image.style.backgroundColor = 'peru';
-                call.style.color = 'peru';
-                message.style.color = 'peru';
-            }else if (`${color}` === '7') {
-                image.style.backgroundColor = 'purple';
-                call.style.color = 'purple';
-                message.style.color = 'purple';
-            }else if (`${color}` === '8') {
-                image.style.backgroundColor = 'palevioletred';
-                call.style.color = 'palevioletred';
-                message.style.color = 'palevioletred';
-            }else if (`${color}` === '9') {
-                image.style.backgroundColor = 'tomato';
-                call.style.color = 'tomato';
-                message.style.color = 'tomato';
-            }else if (`${color}` === '10') {
-                image.style.backgroundColor = 'rgb(106, 106, 211)';
-                call.style.color = 'rgb(106, 106, 211)';
-                message.style.color = 'rgba(106, 106, 211)';
-            }
-
-            // FOR CHANGING THE HREF ATTRIBUTE'S VALUE
-            call.href = `tel:${phoneNo}`;
-
-            // META CAPABILITIES TO ADD TO FAVOURITES; EDIT THE CONTACT; AND DELETE THE CONTACT
-            const star = document.querySelector('.star');
-            star.innerHTML = '<i class="fa-sharp fa-regular fa-star"></i>';
-            // const edit = document.querySelector('.edit');
-            // const removeCon = document.querySelector('.delete');
-                
-            function addStar() {
-                if (star.innerHTML === '<i class="fa-sharp fa-regular fa-star"></i>') {
-                    // If not starred, add star and push to the array
-                    favArray.push(contactArray[i]);
-                    star.innerHTML = '<i class="fa-solid fa-star"></i>';
-                } else {
-                    // If already starred, remove star and splice from the array
-                    const index = favArray.indexOf(contactArray[i]);
-                    if (index !== -1) {
-                        favArray.splice(index, 1);
-                        star.innerHTML = '<i class="fa-regular fa-star"></i>';
-                    } else {
-                        // Otherwise
-                    }
-                }
-            }
-                  
-            star.addEventListener('click', addStar);
-
-        }
+        
+        li.addEventListener('click', function() {
+            currentContact = contact;
+        });
         li.addEventListener('click', doc);
 
-        //FOR REMOVING THE DETAILS OF THE CONTACT
-        let closeAbout = document.querySelector('.closeAboutMe');
-        function closeAboutMe() {
-        aboutMe.style.display = 'none';
-        contactList.style.display = 'block';
-        }
-        closeAbout.addEventListener('click', closeAboutMe);
-
-        
-
-
         //Find the corresponding contact block
-        const block = firstName.charAt(0).toLowerCase();        
-        const divBlock = document.querySelector(`.${block}`);
-        //MAKE THE BLOCK DISPLAY
-        divBlock.style.display = 'flex';
+        const mainBlock = firstName.charAt(0).toLowerCase();
+        const divmainBlock = document.querySelector(`.${mainBlock}`);
+        divmainBlock.style.display = 'flex';
 
         // Find the corresponding alphabetical section (ul) for the contact
         const ul = document.querySelector(`.${firstLetter}`);
@@ -306,5 +211,119 @@ function updateContactList() {
 }
 saveButton.addEventListener('click', saveContact);
 
+//FOR DISPLAYING THE DETAILS OF THE CONTACT
+const aboutMe = document.querySelector('.aboutMe');
+const aboutName = document.querySelector('.name');
+const aboutPhoneNo = document.querySelector('.phoneNumber');
+const removeCon = document.querySelector('.trash');
 
+//VARIABLES FOR THE FAVOURITE BUTTON
+const star = document.querySelector('.star');
+star.innerHTML = '<i class="fa-sharp fa-regular fa-star"></i>';
+//THE CODE FOR THE aboutMe
 
+function doc() {
+    let [firName, lasName, callNo, colour] = currentContact.split(':');
+    aboutMe.style.display = 'block';
+    aboutName.textContent = `${firName} ${lasName}`;
+    aboutPhoneNo.textContent = `${callNo}`;
+    contactList.style.display = 'none';
+
+    //FOR APPLYING COLOR TO THE RESPECTIVE PLACES IN .aboutMe
+    const image = document.querySelector('.image');
+    const call = document.querySelector('.call');
+    const message = document.querySelector('.message')
+    if (`${colour}` === '1') {
+        image.style.backgroundColor = 'red';
+        call.style.color = 'red';
+        message.style.color = 'red';
+    }else if (`${colour}` === '2') {
+        image.style.backgroundColor = 'blue';
+        call.style.color = 'blue';
+        message.style.color = 'blue';
+    }else if (`${colour}` === '3') {
+        image.style.backgroundColor = 'mediumseagreen';
+        call.style.color = 'mediumseagreen';
+        message.style.color = 'mediumseagreen';
+    }else if (`${colour}` === '4') {
+        image.style.backgroundColor = 'brown';
+        call.style.color = 'brown';
+        message.style.color = 'brown';
+    }else if (`${colour}` === '5') {
+        image.style.backgroundColor = 'violet';
+        call.style.color = 'violet';
+        message.style.color = 'violet';
+    }else if (`${colour}` === '6') {
+        image.style.backgroundColor = 'peru';
+        call.style.color = 'peru';
+        message.style.color = 'peru';
+    }else if (`${colour}` === '7') {
+        image.style.backgroundColor = 'purple';
+        call.style.color = 'purple';
+        message.style.color = 'purple';
+    }else if (`${colour}` === '8') {
+        image.style.backgroundColor = 'palevioletred';
+        call.style.color = 'palevioletred';
+        message.style.color = 'palevioletred';
+    }else if (`${colour}` === '9') {
+        image.style.backgroundColor = 'tomato';
+        call.style.color = 'tomato';
+        message.style.color = 'tomato';
+    }else if (`${colour}` === '10') {
+        image.style.backgroundColor = 'rgb(106, 106, 211)';
+        call.style.color = 'rgb(106, 106, 211)';
+        message.style.color = 'rgba(106, 106, 211)';
+    }
+
+    // FOR CHANGING THE HREF ATTRIBUTE'S VALUE
+    call.href = `tel:${callNo}`;
+    
+   
+
+    // removeCon.addEventListener('click', removeItem);
+    star.addEventListener('click', addStar);
+    if (favArray.includes(currentContact)) {
+        star.innerHTML = '<i class="fa-solid fa-star"></i>';
+    
+    }
+}
+        //FOR REMOVING THE DETAILS OF THE CONTACT
+ let closeAbout = document.querySelector('.closeAboutMe');
+ function closeAboutMe() {
+ aboutMe.style.display = 'none';
+ contactList.style.display = 'block';
+ currentContact = '';
+ star.innerHTML = '<i class="fa-sharp fa-regular fa-star"></i>';
+ }
+ closeAbout.addEventListener('click', closeAboutMe);
+
+ // META CAPABILITIES TO ADD TO FAVOURITES; EDIT THE CONTACT; AND DELETE THE CONTACT
+ 
+ const edit = document.querySelector('.edit');
+ function addStar(){
+    starClicked = true;
+    if (star.innerHTML === '<i class="fa-sharp fa-regular fa-star"></i>') {
+        favArray.push(currentContact);
+        starClicked = false;
+        star.innerHTML = '<i class="fa-solid fa-star"></i>';
+    } else  if (favArray.includes(currentContact) && star.innerHTML === '<i class="fa-solid fa-star"></i>') {
+        const index = favArray.indexOf(currentContact);
+        favArray.splice(index, 1);
+        star.innerHTML = '<i class="fa-regular fa-star"></i>';
+    }
+}
+ 
+
+        // function removeItem() {
+        //     let location = contactArray.indexOf(currentContact);
+        //     contactArray.splice(location, 1);
+        //     updateContactList()
+        //     closeAboutMe();
+        //     // const startsWith = currentContact.charAt(0).toLowerCase();
+        //     // const closeBlock = document.querySelector(`.${startsWith}`)
+        //     // if (closeBlock.innerHTML === '') {
+        //     //     closeBlock.style.display = 'none';
+        //     // }
+            
+       
+        // }
