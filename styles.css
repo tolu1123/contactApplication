@@ -67,6 +67,25 @@ div.contactlist {
 div.favourites {
     display: none;
     padding: 15px 20px 0;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 20px;
+}
+div.favourites div {
+    width: 150px;
+    height: 150px;
+    text-align: center;
+}
+div.favourites div div{
+    width: 150px;
+    height: 100px;
+    font-size: 4rem;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+}
+div.favourites div p {
+    color: #fff;
 }
 div.contactlist div.meantimeMessage {
     display: flex;

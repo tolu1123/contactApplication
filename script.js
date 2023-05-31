@@ -14,7 +14,7 @@ contactList.style.display = 'block';
 function highlightFavourites() {
 fav.setAttribute('class', 'highlight');
 allContacts.setAttribute('class', '');
-favourites.style.display = 'block';
+favourites.style.display = 'flex';
 contactList.style.display = 'none';
 }
 
@@ -297,6 +297,69 @@ function doc() {
  }
  closeAbout.addEventListener('click', closeAboutMe);
 
+ //FOR UPDATING THE FAVOURITES LIST
+ function updateFavourites() {
+    favourites.innerHTML = '';
+    for (let i = 0; i < favArray.length; i++) {
+        let favDiv = document.createElement('div');
+        let innerFavDiv = document.createElement('div');
+        let nameFavDiv = document.createElement('p');
+
+        const [realName, surName, digits, col] = favArray[i].split(':');
+        nameFavDiv.textContent = realName + ' ' + surName;
+        innerFavDiv.textContent = realName.charAt(0).toUpperCase();
+        // innerFavDiv.style.textAlign = 'center';
+
+        switch (`${col}`) {
+            case '1':
+            favDiv.style.backgroundColor = 'red';
+            break;
+
+            case '2':
+            favDiv.style.backgroundColor = 'blue';
+            break;
+
+            case '3':
+            favDiv.style.backgroundColor = 'mediumseagreen';
+            break;
+
+            case '4':
+            favDiv.style.backgroundColor = 'brown';
+            break;
+
+            case '5':
+            favDiv.style.backgroundColor = 'violet';
+            break;
+
+            case '6':
+            favDiv.style.backgroundColor = 'peru';
+            break;
+
+            case '7':
+            favDiv.style.backgroundColor = 'purple';
+            break;
+
+            case '8':
+            favDiv.style.backgroundColor = 'palevioletred';
+            break;
+
+            case '9':
+            favDiv.style.backgroundColor = 'tomato';
+            break;
+
+            case '10':
+            favDiv.style.backgroundColor = 'rgb(106, 106, 211)';
+            break;
+
+            default:
+
+        }
+
+        favourites.appendChild(favDiv);
+        favDiv.appendChild(innerFavDiv);
+        favDiv.appendChild(nameFavDiv);
+    }
+}
  // META CAPABILITIES TO ADD TO FAVOURITES; EDIT THE CONTACT; AND DELETE THE CONTACT
  
  const edit = document.querySelector('.edit');
@@ -311,8 +374,10 @@ function doc() {
         favArray.splice(index, 1);
         star.innerHTML = '<i class="fa-regular fa-star"></i>';
     }
+    updateFavourites();
 }
- 
+
+
 
         // function removeItem() {
         //     let location = contactArray.indexOf(currentContact);
@@ -327,3 +392,6 @@ function doc() {
             
        
         // }
+
+// Call updateFavoritesView initially to render the favorites list
+updateFavourites();
