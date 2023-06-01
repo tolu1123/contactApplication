@@ -78,8 +78,7 @@ const phone = document.querySelector('.phoneNo');
 let contactArray = [];
 let favArray = [];
 let currentContact = '';
-let starClicked = false;
-let recentContact = null;
+
 
 function saveContact() {
     let phoneNo = phone.value;
@@ -282,10 +281,7 @@ function doc() {
 
     // removeCon.addEventListener('click', removeItem);
     star.addEventListener('click', addStar);
-    if (favArray.includes(currentContact)) {
-        star.innerHTML = '<i class="fa-solid fa-star"></i>';
-    
-    }
+    updateStar();
 }
         //FOR REMOVING THE DETAILS OF THE CONTACT
  let closeAbout = document.querySelector('.closeAboutMe');
@@ -365,11 +361,9 @@ function doc() {
  const edit = document.querySelector('.edit');
  function addStar(){
     starClicked = true;
-    if (star.innerHTML === '<i class="fa-sharp fa-regular fa-star"></i>') {
+    if (!(favArray.includes(currentContact))) {
         favArray.push(currentContact);
-        starClicked = false;
-        star.innerHTML = '<i class="fa-solid fa-star"></i>';
-    } else  if (favArray.includes(currentContact) && star.innerHTML === '<i class="fa-solid fa-star"></i>') {
+    } else {
         const index = favArray.indexOf(currentContact);
         favArray.splice(index, 1);
         star.innerHTML = '<i class="fa-regular fa-star"></i>';
@@ -377,7 +371,17 @@ function doc() {
     updateFavourites();
 }
 
+function updateStar() {
 
+    if (favArray.includes(currentContact)) {
+
+        star.innerHTML = '<i class="fa-solid fa-star"></i>';
+
+    
+
+    }
+
+    }
 
         // function removeItem() {
         //     let location = contactArray.indexOf(currentContact);
