@@ -360,13 +360,25 @@ function doc() {
  
  const edit = document.querySelector('.edit');
  function addStar(){
+
     starClicked = true;
+
     if (!(favArray.includes(currentContact))) {
+
         favArray.push(currentContact);
+
+        starClicked = false;
+
+        star.innerHTML = '<i class="fa-solid fa-star"></i>';
+
     } else {
+
         const index = favArray.indexOf(currentContact);
+
         favArray.splice(index, 1);
+
         star.innerHTML = '<i class="fa-regular fa-star"></i>';
+
     }
     updateFavourites();
 }
